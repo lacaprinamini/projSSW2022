@@ -54,6 +54,7 @@ export class AppComponent  {
 
       receiveKey($event) { 
         this.chiave = $event; 
+        
       }
       receiveNominativo($event) { 
         this.nominativo = $event; 
@@ -62,6 +63,7 @@ export class AppComponent  {
          imposta(posto: string){   
        console.log("Prenotato a " + this.nominativo +" il posto " + posto);
       console.log(this.chiave)
+      // query per inserire nome al posto, set
        
          }
            
