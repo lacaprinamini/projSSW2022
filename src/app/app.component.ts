@@ -46,11 +46,30 @@ export class AppComponent  {
     };
     let nomiPlatea=[];
     let nomiPalchi=[];
-    
         this.platea= new posti(teatro.platea, nomiPlatea);
         this.palchi= new posti(teatro.palchi, nomiPalchi);
+
+        // let postiNomi=[{
+        //   posto: "",
+        //   nome:""
+        // }];
+        // for(var i=0; i++; i<this.platea.nomi.length){
+        //   postiNomi.push({
+        //     posto: this.platea.postiDisponibili[i],
+        //     nome: this.platea.nomi[i]
+        //   })
+        // }
+        const brands = [{posto:"", nome:""}];
+        for(var i=0; i<this.platea.nomi.length; i++){
+         brands.push({posto:this.platea.postiDisponibili[i], nome: "ii"});
+        }
         
-      }
+        console.log(brands);
+        
+}
+        
+        
+      
 
       receiveKey($event) { 
         this.chiave = $event; 
