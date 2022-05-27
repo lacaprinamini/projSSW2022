@@ -59,12 +59,18 @@ export class AppComponent  {
         //     nome: this.platea.nomi[i]
         //   })
         // }
-        const brands = [{posto:"", nome:""}];
+        const postoNomePlatea = [{posto:"", nome:""}];
         for(var i=0; i<this.platea.nomi.length; i++){
-         brands.push({posto:this.platea.postiDisponibili[i], nome: "ii"});
+          postoNomePlatea .push({posto:this.platea.postiDisponibili[i], nome: this.platea.nomi[i]});
         }
-        
-        console.log(brands);
+        postoNomePlatea.splice(0,1);
+       
+        const postoNomePalchi = [{posto:"", nome:""}];
+        for(var i=0; i<this.palchi.nomi.length; i++){
+          postoNomePalchi .push({posto:this.palchi.postiDisponibili[i], nome: this.palchi.nomi[i]});
+        }
+        postoNomePalchi.splice(0,1);
+
         
 }
         
