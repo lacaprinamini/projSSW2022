@@ -2,21 +2,25 @@
 import { Component, VERSION, Input } from '@angular/core';
 
 class posti {
-  postiDisponibili: Array<string>;
-  nomi: Array<string>
-  constructor(postiDisponibili: Array<any>,nomi: Array<string>) {
-    let posti= []; 
-    let nomiPosti=[];
-    postiDisponibili.map((fila, i) => {
-        fila.map((nome, j) => {  
-          const posto="P"+(j+1)+(i+1);
-           posti.push(posto);  
-           nomiPosti.push(nome);
+  nfile: number;
+  nposti: number;
+  postiNome: object;
+  constructor(nfile: number,
+    nposti: number, postiNome: object) {
+      let posti= Array(nfile).fill("").map(() => Array(nposti).fill("x"));
+    const postoNome = [{posto:"", nome:""}];
+    posti.map((fila, i) => {
+        fila.map((nome, j) => { 
+          const posto= 'P'+(j+1)+(i+1); 
+          postoNome .push({posto: posto, nome: nome});
       });
       
     });
-    this.postiDisponibili= posti;
-    this.nomi= nomiPosti;
+    
+    postoNome.splice(0,1);
+    
+    this.postiNome= postoNome;
+    
   }
 }
 @Component({
@@ -25,7 +29,7 @@ class posti {
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  platea: posti;
+  platea: object;
   palchi: posti;
   color: "";
   
@@ -40,14 +44,17 @@ export class AppComponent  {
     filePalchi: 4,
     postiPalchi: 6
     }
-    const teatro = {
-      platea: Array(n.filePlatea).fill("").map(() => Array(n.postiPlatea).fill("x")),
-      palchi: Array(n.filePalchi).fill("").map(() => Array(n.postiPalchi).fill("x")),
-    };
-    let nomiPlatea=[];
-    let nomiPalchi=[];
-        this.platea= new posti(teatro.platea, nomiPlatea);
-        this.palchi= new posti(teatro.palchi, nomiPalchi);
+    let nomiPlatea=Object;
+    let nomiPalchi=Object;
+
+        this.platea= new posti(n.filePlatea, n.postiPlatea, nomiPlatea);
+        console.log( this.platea["postiNome"])
+
+        
+        this.palchi= new posti(n.filePalchi, n.postiPalchi, nomiPalchi);
+        console.log( this.palchi["postiNome"])
+  
+        // this.palchi= new posti(teatro.palchi, nomiPalchi);
 
         // let postiNomi=[{
         //   posto: "",
@@ -59,17 +66,14 @@ export class AppComponent  {
         //     nome: this.platea.nomi[i]
         //   })
         // }
-        const postoNomePlatea = [{posto:"", nome:""}];
-        for(var i=0; i<this.platea.nomi.length; i++){
-          postoNomePlatea .push({posto:this.platea.postiDisponibili[i], nome: this.platea.nomi[i]});
-        }
-        postoNomePlatea.splice(0,1);
        
-        const postoNomePalchi = [{posto:"", nome:""}];
-        for(var i=0; i<this.palchi.nomi.length; i++){
-          postoNomePalchi .push({posto:this.palchi.postiDisponibili[i], nome: this.palchi.nomi[i]});
-        }
-        postoNomePalchi.splice(0,1);
+        
+       
+        // const postoNomePalchi = [{posto:"", nome:""}];
+        // for(var i=0; i<this.palchi.nomi.length; i++){
+        //   postoNomePalchi .push({posto:this.palchi.postiDisponibili[i], nome: this.palchi.nomi[i]});
+        // }
+        // postoNomePalchi.splice(0,1);
 
         
 }
