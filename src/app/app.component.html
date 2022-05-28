@@ -10,7 +10,6 @@
 <html>
 <body   >
   <div  *ngIf = " nominativo !== undefined ">
-<div *ngIf = "chiave !== undefined" >
 <div>
 <p> Platea: </p> 
 <ul>
@@ -23,10 +22,9 @@
 <p > Palchi: </p>
 <ul>
   <li *ngFor='let posto of postiPalchi' >
-    <button [appColor]="color" >{{posto}}</button>
+    <button [appColor]="color" (click)='imposta(posto)' >{{posto}}</button>
   </li>
 </ul> 
-</div>
 </div>
 </div>
 </body>

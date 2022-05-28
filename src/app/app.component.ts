@@ -65,16 +65,9 @@ export class AppComponent  {
           // console.log(posto);
           this.postiPalchi.push(posto);
         }
-        
-        
-        // this.palchi= new posti(n.filePalchi, n.postiPalchi, nomiPalchi);
-        // console.log( this.palchi["postiNome"])
 
         
 }
-        
-        
-      
 
       receiveKey($event) { 
         this.chiave = $event; 
@@ -87,6 +80,7 @@ export class AppComponent  {
          imposta(posto: string){   
        console.log("Prenotato a " + this.nominativo +" il posto " + posto);
       console.log(this.chiave)
+      this.nominativo=undefined;
       // query per inserire nome al posto, set
        
          }
