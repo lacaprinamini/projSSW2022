@@ -39,6 +39,7 @@ export class AppComponent  {
   
   nominativo: string;
   chiave: string;
+  
   constructor(private query: kvaasService) {
     
 
@@ -67,13 +68,11 @@ export class AppComponent  {
           this.postiPalchi.push(posto);
         }
         let res="";
-        this.query
-      .getData()
-      .subscribe({
-        next: (x: any) => (console.log(x)),
+        this.query.getData().subscribe({
+        next: (x: string) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });
-      console.log(res)
+     
         
 }
 
