@@ -1,4 +1,4 @@
-<!-- <p *ngIf = "chiave == undefined" >
+<p *ngIf = "chiave == undefined" >
 <app-chiave (chiaveEvent)="receiveKey($event)"> </app-chiave>
 </p>
 
@@ -14,7 +14,7 @@
 <div>
 <p> Platea: </p> 
 <ul>
-<li *ngFor='let posto of platea.postiDisponibili' >  
+<li *ngFor="let posto of postiPlatea" >  
 <button [appColor]="color" (click)='imposta(posto)'>{{posto}}</button>
 </li>
 </ul>
@@ -22,7 +22,7 @@
 <div>
 <p > Palchi: </p>
 <ul>
-  <li *ngFor='let posto of palchi.postiDisponibili' >
+  <li *ngFor='let posto of postiPalchi' >
     <button [appColor]="color" >{{posto}}</button>
   </li>
 </ul> 
@@ -30,4 +30,4 @@
 </div>
 </div>
 </body>
-</html> -->
+</html>

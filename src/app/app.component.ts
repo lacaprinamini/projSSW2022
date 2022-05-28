@@ -7,6 +7,7 @@ class posti {
   postiNome: object;
   constructor(nfile: number,
     nposti: number, postiNome: object) {
+
       let posti= Array(nfile).fill("").map(() => Array(nposti).fill("x"));
     const postoNome = [{posto:"", nome:""}];
     posti.map((fila, i) => {
@@ -29,8 +30,10 @@ class posti {
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  platea: object;
+  platea: posti;
   palchi: posti;
+  postiPlatea: string[]=[];
+  postiPalchi: string[]=[];
   color: "";
   
   nominativo: string;
@@ -48,32 +51,24 @@ export class AppComponent  {
     let nomiPalchi=Object;
 
         this.platea= new posti(n.filePlatea, n.postiPlatea, nomiPlatea);
-        console.log( this.platea["postiNome"])
-
         
         this.palchi= new posti(n.filePalchi, n.postiPalchi, nomiPalchi);
-        console.log( this.palchi["postiNome"])
-  
-        // this.palchi= new posti(teatro.palchi, nomiPalchi);
-
-        // let postiNomi=[{
-        //   posto: "",
-        //   nome:""
-        // }];
-        // for(var i=0; i++; i<this.platea.nomi.length){
-        //   postiNomi.push({
-        //     posto: this.platea.postiDisponibili[i],
-        //     nome: this.platea.nomi[i]
-        //   })
-        // }
-       
         
-       
-        // const postoNomePalchi = [{posto:"", nome:""}];
-        // for(var i=0; i<this.palchi.nomi.length; i++){
-        //   postoNomePalchi .push({posto:this.palchi.postiDisponibili[i], nome: this.palchi.nomi[i]});
-        // }
-        // postoNomePalchi.splice(0,1);
+        for (var k in this.platea["postiNome"]){
+          let posto=this.platea["postiNome"][k]['posto'];
+          // console.log(posto);
+          this.postiPlatea.push(posto);
+        }
+        
+        for (var k in this.palchi["postiNome"]){
+          let posto=this.palchi["postiNome"][k]['posto'];
+          // console.log(posto);
+          this.postiPalchi.push(posto);
+        }
+        
+        
+        // this.palchi= new posti(n.filePalchi, n.postiPalchi, nomiPalchi);
+        // console.log( this.palchi["postiNome"])
 
         
 }
