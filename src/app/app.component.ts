@@ -1,5 +1,6 @@
 
 import { Component, VERSION, Input } from '@angular/core';
+import { kvaasService } from "./teatro.service";
 
 class posti {
   nfile: number;
@@ -38,7 +39,7 @@ export class AppComponent  {
   
   nominativo: string;
   chiave: string;
-  constructor() {
+  constructor(private query: kvaasService) {
     
 
   const n = {
@@ -65,7 +66,14 @@ export class AppComponent  {
           // console.log(posto);
           this.postiPalchi.push(posto);
         }
-
+        let res="";
+        this.query
+      .getData()
+      .subscribe({
+        next: (x: any) => (console.log(x)),
+        error: err => console.error("Observer got an error: " + JSON.stringify(err))
+      });
+      console.log(res)
         
 }
 
@@ -77,9 +85,11 @@ export class AppComponent  {
         this.nominativo = $event; 
       }
       
+
          imposta(posto: string){   
        console.log("Prenotato a " + this.nominativo +" il posto " + posto);
       console.log(this.chiave)
+      
       this.nominativo=undefined;
       // query per inserire nome al posto, set
        
