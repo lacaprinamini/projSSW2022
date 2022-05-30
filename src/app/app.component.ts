@@ -38,7 +38,7 @@ export class AppComponent  {
   color: "";
   
   nominativo: string;
-  chiave: string;
+  chiave: any;
   
   constructor(private query: kvaasService) {
     
@@ -67,14 +67,35 @@ export class AppComponent  {
           // console.log(posto);
           this.postiPalchi.push(posto);
         }
-        let res="";
-        this.query.getData().subscribe({
-        next: (x: string) => (console.log(x)),
-        error: err => console.error("Observer got an error: " + JSON.stringify(err))
-      });
-     
+        // let res="";
+        // this.query.setData(this.platea).subscribe({
+        // next: (x: any) => (console.log(x)),
+        // error: err => console.error("Observer got an error: " + JSON.stringify(err))
+//         var msg = JSON.stringify(this.platea);
+// fetch( 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/new?secret=ssw2022')  // new request
+//   .then(response => response.json(), error => console.log(error))
+//   .then(key => {
+//     console.log(key);
+//     fetch( 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/set?key=' + key, { method: 'POST', body: msg }) // set request
+//       .then(response => response.json(), error => console.log(error))
+//       .then(data => {
+//         console.log(data);
+//         fetch('https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/get?key=' + key)  // get request
+//           .then(response => response.json(), error => console.log(error))
+//           .then(data => {
+//             console.log(data);
+//       });
+//     });
         
-}
+// });
+// this.query.setData(this.platea).subscribe({
+        // next: (x: any) => (console.log(x)),
+        // error: err => console.error("Observer got an error: " + JSON.stringify(err))
+        this.query.setData(this.platea).subscribe({
+        next: (x: any) => (console.log(x)),
+        error: err => console.error("Observer got an error: " + JSON.stringify(err))
+        });
+  }
 
       receiveKey($event) { 
         this.chiave = $event; 

@@ -10,13 +10,11 @@ export class kvaasService {
   data: string;
   constructor(private http: HttpClient) { }
 
-  public setData(teatro: object, key:string): Observable<string> {
-    // var msg = JSON.stringify(teatro);
-    // fetch(this.baseURL + '/set?key=' + key, { method: 'POST', body: msg }) 
-    // .then(response => response.json(), error => console.log(error))
-    // .then(data => {
-     return this.http.get<string>(this.baseURL+CityName);
-    });
+  public setData(teatro: object): Observable<ArrayBuffer> {
+    var msg = JSON.stringify(teatro);
+   
+     return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '1ea9441d', msg )
+    
   
 }
 }
