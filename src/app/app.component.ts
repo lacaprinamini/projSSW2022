@@ -39,7 +39,7 @@ export class AppComponent  {
   
   nominativo: string;
   chiave: any;
-  
+  p: any;
   constructor(private query: kvaasService) {
     
 
@@ -91,6 +91,7 @@ export class AppComponent  {
 // this.query.setData(this.platea).subscribe({
         // next: (x: any) => (console.log(x)),
         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
+        
         this.query.setData(this.platea).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
@@ -98,10 +99,10 @@ export class AppComponent  {
 
         this.query.getData().subscribe({
           next: (x: any) => (
-          console.log(JSON.parse(x)['postiNome'][0]['posto'])),
+          this.p=JSON.stringify((x)), console.log(this.p+"ttttttt")),
           error: err => console.error("Observer got an error: " + JSON.stringify(err))
           });
-      //  console.log(console.log(this.chiave["postiNome"][0].posto))
+        console.log(this.p)
   }
 
       receiveKey($event) { 
