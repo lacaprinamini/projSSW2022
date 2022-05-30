@@ -97,9 +97,11 @@ export class AppComponent  {
         });
 
         this.query.getData().subscribe({
-          next: (x: any) => (console.log(x)),
+          next: (x: any) => (
+          console.log(JSON.parse(x)['postiNome'][0]['posto'])),
           error: err => console.error("Observer got an error: " + JSON.stringify(err))
           });
+      //  console.log(console.log(this.chiave["postiNome"][0].posto))
   }
 
       receiveKey($event) { 
