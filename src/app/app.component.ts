@@ -95,6 +95,11 @@ export class AppComponent  {
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
         });
+
+        this.query.getData().subscribe({
+          next: (x: any) => (console.log(x)),
+          error: err => console.error("Observer got an error: " + JSON.stringify(err))
+          });
   }
 
       receiveKey($event) { 
