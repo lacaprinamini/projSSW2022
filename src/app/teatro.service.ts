@@ -15,6 +15,6 @@ export class kvaasService {
      return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '1ea9441d', msg )
 }
 public getData(): Observable<string> {
-  return this.http.get<string>(this.baseURL+ '/get?key=' +'1ea9441d');
+  return this.http.get<string>(this.baseURL+ '/get?key=' +'1ea9441d')
 }
 }

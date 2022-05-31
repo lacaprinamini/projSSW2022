@@ -99,7 +99,7 @@ export class AppComponent  {
 
         this.query.getData().subscribe({
           next: (x: any) => (
-          this.p=JSON.stringify((x)), console.log(this.p+"ttttttt")),
+          this.p=JSON.parse((x)), console.log(this.p['postiNome'][0])),
           error: err => console.error("Observer got an error: " + JSON.stringify(err))
           });
         console.log(this.p)
