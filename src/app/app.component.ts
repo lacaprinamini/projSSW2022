@@ -8,19 +8,15 @@ class posti {
   postiNome: object;
   constructor(nfile: number,
     nposti: number, postiNome: object) {
-
       let posti= Array(nfile).fill("").map(() => Array(nposti).fill("x"));
     const postoNome = [{posto:"", nome:""}];
     posti.map((fila, i) => {
         fila.map((nome, j) => { 
           const posto= 'P'+(j+1)+(i+1); 
           postoNome .push({posto: posto, nome: nome});
-      });
-      
-    });
-    
-    postoNome.splice(0,1);
-    
+      });     
+    });   
+    postoNome.splice(0,1);    
     this.postiNome= postoNome;
     
   }
@@ -36,19 +32,10 @@ export class AppComponent  {
   postiPlatea: string[]=[];
   postiPalchi: string[]=[];
   color: "";
-  divStyle: string;
   nominativo: string;
   chiave: any;
  
   constructor(private query: kvaasService) {}
-    
-
- 
-          
-  
-  
-
-
       receiveKey($event) { 
         this.chiave = $event; 
         let nomiPlatea=Object;
@@ -56,23 +43,18 @@ export class AppComponent  {
         this.query.getData(this.chiave).subscribe({
       next: (x: any) => (this.platea= JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
-      });
-     
+      });    
       for (var k in this.platea["postiNome"]){
         let posto=this.platea["postiNome"][k]['posto'];     
         this.postiPlatea.push(posto);
       }
-  
       }
 
       receiveNominativo($event) { 
-        this.nominativo = $event; 
-      
-        
+        this.nominativo = $event;        
       }
       
-         imposta(posto: string){   
-         
+         imposta(posto: string){           
       for (var k in this.platea["postiNome"]){
         if(this.platea["postiNome"][k]['posto']==posto){
           this.platea["postiNome"][k]['nome']=this.nominativo;
@@ -82,11 +64,8 @@ export class AppComponent  {
       this.query.setData(this.platea).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
-        });
-        
-      this.nominativo=undefined;
-      
-       
+        });        
+      this.nominativo=undefined;      
          }
          
           
