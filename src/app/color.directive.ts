@@ -5,12 +5,12 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class colorDirective {
   constructor(private el: ElementRef) { }
-  @Input() defaultColor = '';
+  
   
   @Input() appColor= '';
   
   @HostListener('click') onClick() {
-    this.highlight(this.appColor || this.defaultColor || 'red');
+    this.highlight('red');
   }
   private highlight(color: string) {
     this.el.nativeElement.style.color = color;

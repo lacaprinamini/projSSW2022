@@ -39,91 +39,44 @@ export class AppComponent  {
   divStyle: string;
   nominativo: string;
   chiave: any;
-  p: any;
-  constructor(private query: kvaasService) {
+ 
+  constructor(private query: kvaasService) {}
     
 
-  const n = {
-    filePlatea: 7,
-    postiPlatea: 10,    
-    filePalchi: 4,
-    postiPalchi: 6
-    }
-    let nomiPlatea=Object;
-    let nomiPalchi=Object;
-
-        this.platea= new posti(n.filePlatea, n.postiPlatea, nomiPlatea);
-        
-        this.palchi= new posti(n.filePalchi, n.postiPalchi, nomiPalchi);
-        
-        for (var k in this.platea["postiNome"]){
-          let posto=this.platea["postiNome"][k]['posto'];
-          // console.log(posto);
-          this.postiPlatea.push(posto);
-        }
-        
-        for (var k in this.palchi["postiNome"]){
-          let posto=this.palchi["postiNome"][k]['posto'];
-          // console.log(posto);
-          this.postiPalchi.push(posto);
-        }
-        // let res="";
-        // this.query.setData(this.platea).subscribe({
-        // next: (x: any) => (console.log(x)),
-        // error: err => console.error("Observer got an error: " + JSON.stringify(err))
-//         var msg = JSON.stringify(this.platea);
-// fetch( 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/new?secret=ssw2022')  // new request
-//   .then(response => response.json(), error => console.log(error))
-//   .then(key => {
-//     console.log(key);
-//     fetch( 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/set?key=' + key, { method: 'POST', body: msg }) // set request
-//       .then(response => response.json(), error => console.log(error))
-//       .then(data => {
-//         console.log(data);
-//         fetch('https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint' + '/get?key=' + key)  // get request
-//           .then(response => response.json(), error => console.log(error))
-//           .then(data => {
-//             console.log(data);
-//       });
-//     });
-        
-// });
-// this.query.setData(this.platea).subscribe({
-        // next: (x: any) => (console.log(x)),
-        // error: err => console.error("Observer got an error: " + JSON.stringify(err))
-        
-        
-
-        
+ 
           
-  }
-  refreshTemperature() {
-    let nomiPalchi=Object;
-    this.platea = new posti(8, 7, nomiPalchi);
-    
-    this.query
-      .getData()
-      .subscribe({
-      next: (x: any) => (this.platea= x),
-        error: err => console.error("Observer got an error: " + JSON.stringify(err))
-      });
-      console.log(this.platea)
-  }
+  
+  
+
+
       receiveKey($event) { 
         this.chiave = $event; 
-        
+        let nomiPlatea=Object;
+        this.platea= new posti(7, 10, nomiPlatea);
+        this.query.getData(this.chiave).subscribe({
+      next: (x: any) => (this.platea= JSON.parse(x)),
+        error: err => console.error("Observer got an error: " + JSON.stringify(err))
+      });
+     
+      for (var k in this.platea["postiNome"]){
+        let posto=this.platea["postiNome"][k]['posto'];     
+        this.postiPlatea.push(posto);
       }
+  
+      }
+
       receiveNominativo($event) { 
         this.nominativo = $event; 
+      
+        
       }
       
-
          imposta(posto: string){   
-      // console.log("Prenotato a " + this.nominativo + " il posto " + posto);
-      //console.log(this.chiave)
+         
       for (var k in this.platea["postiNome"]){
         if(this.platea["postiNome"][k]['posto']==posto){
           this.platea["postiNome"][k]['nome']=this.nominativo;
+          
         }
       }
       this.query.setData(this.platea).subscribe({
@@ -135,12 +88,8 @@ export class AppComponent  {
       
        
          }
-         getColor(){
-           
-          return this.p="ff" ? 'red' : 'green';}
-
+         
           
 
 }
 
-// fare prima get e vedere teatro per vedere posti occupati e segnarli di rosso con this.style

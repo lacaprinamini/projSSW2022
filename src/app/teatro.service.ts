@@ -14,7 +14,7 @@ export class kvaasService {
     var msg = JSON.stringify(teatro);
      return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '1ea9441d', msg )
 }
-public getData(): Observable<string> {
-  return this.http.get<string>(this.baseURL+ '/get?key=' +'1ea9441d');
+public getData(chiave: string): Observable<string> {
+  return this.http.get<string>(this.baseURL+ '/get?key=' +chiave);
 }
 }

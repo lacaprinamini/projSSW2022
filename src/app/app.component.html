@@ -10,13 +10,13 @@
 </div>
 <html>
   <body>
-    <div >
+    <div *ngIf="nominativo !== undefined">
+
       <div>
         <p>Platea:</p>
         <ul>
           <li *ngFor="let posto of postiPlatea">
-            <button [ngStyle]="{color: getColor()}"(click)="refreshTemperature()">
-              {{ posto }}
+            <button [appColor]="color"(click)="imposta(posto)">{{ posto }}
             </button>
           </li>
         </ul>
