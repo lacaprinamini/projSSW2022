@@ -5,20 +5,22 @@ import { kvaasService } from "./teatro.service";
 class posti {
   nfile: number;
   nposti: number;
-  postiNome: object;
+  postiNome: string[];
+  postiDisponibili: string[]
   constructor(nfile: number,
-    nposti: number, postiNome: object) {
+    nposti: number, postiNome: object, postiDisponibili: string[]) {
       let posti= Array(nfile).fill("").map(() => Array(nposti).fill("x"));
-    const postoNome = [{posto:"", nome:""}];
+    const postoNome = [];
+    const postiLiberi=[];
     posti.map((fila, i) => {
         fila.map((nome, j) => { 
           const posto= 'P'+(j+1)+(i+1); 
-          postoNome .push({posto: posto, nome: nome});
+          postoNome .push(nome);
+         postiLiberi.push(posto);
       });     
-    });   
-    postoNome.splice(0,1);    
+    });      
     this.postiNome= postoNome;
-    
+    this.postiDisponibili=postiLiberi;
   }
 }
 @Component({
@@ -38,34 +40,33 @@ export class AppComponent  {
   constructor(private query: kvaasService) {}
       receiveKey($event) { 
         this.chiave = $event; 
-        let nomiPlatea=Object;
-        let nomiPalchi=Object;
-        this.platea= new posti(7, 10, nomiPlatea);
-        this.palchi=new posti(4, 6, nomiPalchi);
+        let nomiPlatea=[];
+        let nomiPalchi=[];
+        let postiDisponibiliPalchi=[];
+        let postiDisponibiliPlatea=[];
+        this.platea= new posti(7, 10, nomiPlatea, postiDisponibiliPlatea);
+        
+        //this.palchi=new posti(4, 6, nomiPalchi);
+     
         this.query.getData(this.chiave).subscribe({
-      next: (x: any) => (this.platea= JSON.parse(x)),
+      next: (x: any) => (this.platea.postiNome= JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
-      });    
-      for (var k in this.platea["postiNome"]){
-        let posto=this.platea["postiNome"][k]['posto'];     
-        this.postiPlatea.push(posto);
-      }
+      });  
       }
 
       receiveNominativo($event) { 
         this.nominativo = $event;        
       }
       
-         imposta(posto: string){           
-      for (var k in this.platea["postiNome"]){
-        if(this.platea["postiNome"][k]['posto']==posto){
-          this.platea["postiNome"][k]['nome']=this.nominativo;
+         imposta(posto: string){  
+                  
+      for (var k in this.platea.postiDisponibili){
+        if(this.platea.postiDisponibili[k]==posto){
+          this.platea.postiNome[k]=this.nominativo;
           
         }
       }
-      console.log(this.palchi['postiNome'])
-      console.log(this.platea+"rrr")
-      this.query.setData(this.platea.postiNome['postiNome'],this.palchi['postiNome']).subscribe({
+      this.query.setData(this.platea.postiNome).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
         });        
