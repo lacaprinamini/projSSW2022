@@ -93,11 +93,22 @@ export class AppComponent  {
         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
         
         
-this.p="ff"
+
         
           
   }
-
+  refreshTemperature() {
+    let nomiPalchi=Object;
+    this.platea = new posti(8, 7, nomiPalchi);
+    
+    this.query
+      .getData()
+      .subscribe({
+      next: (x: any) => (this.platea= x),
+        error: err => console.error("Observer got an error: " + JSON.stringify(err))
+      });
+      console.log(this.platea)
+  }
       receiveKey($event) { 
         this.chiave = $event; 
         
@@ -127,6 +138,8 @@ this.p="ff"
          getColor(){
            
           return this.p="ff" ? 'red' : 'green';}
+
+          
 
 }
 
