@@ -94,11 +94,7 @@ export class AppComponent  {
         
         
 
-        //this.query.getData().subscribe({
-         // next: (x: any) => (
-         // this.p=JSON.parse((x)), console.log(this.p['postiNome'][0]['nome'])),
-         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
-          //});
+        
           
   }
 
@@ -123,6 +119,7 @@ export class AppComponent  {
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
         });
+        
       this.nominativo=undefined;
       
        
@@ -130,3 +127,4 @@ export class AppComponent  {
            
 
 }
+// fare prima get e vedere teatro per vedere posti occupati e segnarli di rosso con this.style
