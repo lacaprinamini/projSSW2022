@@ -116,7 +116,7 @@ export class AppComponent  {
       //console.log(this.chiave)
       for (var k in this.platea["postiNome"]){
         if(this.platea["postiNome"][k]['posto']==posto){
-          this.platea["postiNome"][k]['nome']='pibe'
+          this.platea["postiNome"][k]['nome']=this.nominativo;
         }
       }
       this.query.setData(this.platea).subscribe({
