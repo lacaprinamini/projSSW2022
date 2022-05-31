@@ -99,11 +99,7 @@ export class AppComponent  {
          // this.p=JSON.parse((x)), console.log(this.p['postiNome'][0]['nome'])),
          // error: err => console.error("Observer got an error: " + JSON.stringify(err))
           //});
-          for(var i=0; i++; i<7){
-            console.log("e")
           
-          }
-  
   }
 
       receiveKey($event) { 
@@ -116,8 +112,13 @@ export class AppComponent  {
       
 
          imposta(posto: string){   
-       console.log("Prenotato a " + this.nominativo +" il posto " + posto);
-      console.log(this.chiave)
+      // console.log("Prenotato a " + this.nominativo + " il posto " + posto);
+      //console.log(this.chiave)
+      for (var k in this.platea["postiNome"]){
+        if(this.platea["postiNome"][k]['posto']==posto){
+          this.platea["postiNome"][k]['nome']='pibe'
+        }
+      }
       this.query.setData(this.platea).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
