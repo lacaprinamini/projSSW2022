@@ -93,7 +93,7 @@ export class AppComponent  {
         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
         
         
-
+this.p="ff"
         
           
   }
@@ -124,9 +124,10 @@ export class AppComponent  {
       
        
          }
-         ngAfterViewInit() {
-          this.divStyle = "red"; 
-        }
+         getColor(){
+           
+          return this.p="ff" ? 'red' : 'green';}
 
 }
+
 // fare prima get e vedere teatro per vedere posti occupati e segnarli di rosso con this.style

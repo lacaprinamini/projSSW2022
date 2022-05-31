@@ -15,7 +15,7 @@
         <p>Platea:</p>
         <ul>
           <li *ngFor="let posto of postiPlatea">
-            <button [ngStyle]="{'color': divStyle}"(click)="imposta(posto)">
+            <button [ngStyle]="{color: getColor()}"(click)="imposta(posto)">
               {{ posto }}
             </button>
           </li>
