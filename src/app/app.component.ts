@@ -36,7 +36,7 @@ export class AppComponent  {
   postiPlatea: string[]=[];
   postiPalchi: string[]=[];
   color: "";
-  
+  divStyle: string;
   nominativo: string;
   chiave: any;
   p: any;
@@ -124,7 +124,9 @@ export class AppComponent  {
       
        
          }
-           
+         ngAfterViewInit() {
+          this.divStyle = "red"; 
+        }
 
 }
 // fare prima get e vedere teatro per vedere posti occupati e segnarli di rosso con this.style
