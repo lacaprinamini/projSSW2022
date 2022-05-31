@@ -1,31 +1,36 @@
-<p *ngIf = "chiave == undefined" >
-<app-chiave (chiaveEvent)="receiveKey($event)"> </app-chiave>
+<p *ngIf="chiave == undefined">
+  <app-chiave (chiaveEvent)="receiveKey($event)"> </app-chiave>
 </p>
 
-<div *ngIf = " nominativo == undefined ">
- <p *ngIf = "chiave !== undefined"> 
-<app-nominativo  (nominativoEvent)="receiveNominativo($event)"> </app-nominativo></p>
-
-</div> 
+<div *ngIf="nominativo == undefined">
+  <p *ngIf="chiave !== undefined">
+    <app-nominativo (nominativoEvent)="receiveNominativo($event)">
+    </app-nominativo>
+  </p>
+</div>
 <html>
-<body   >
-  <div  *ngIf = " nominativo !== undefined ">
-<div>
-<p> Platea: </p> 
-<ul>
-<li *ngFor="let posto of postiPlatea" >  
-<button [appColor]="color" (click)='imposta(posto)'>{{posto}}</button>
-</li>
-</ul>
-</div>
-<div>
-<p > Palchi: </p>
-<ul>
-  <li *ngFor='let posto of postiPalchi' >
-    <button [appColor]="color" (click)='imposta(posto)' >{{posto}}</button>
-  </li>
-</ul> 
-</div>
-</div>
-</body>
+  <body>
+    <div *ngIf="nominativo !== undefined">
+      <div>
+        <p>Platea:</p>
+        <ul>
+          <li *ngFor="let posto of postiPlatea">
+            <button [appColor]="color" (click)="imposta(posto)">
+              {{ posto }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p>Palchi:</p>
+        <ul>
+          <li *ngFor="let posto of postiPalchi">
+            <button [appColor]="color" (click)="imposta(posto)">
+              {{ posto }}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
