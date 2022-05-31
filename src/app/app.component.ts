@@ -92,17 +92,18 @@ export class AppComponent  {
         // next: (x: any) => (console.log(x)),
         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
         
-        this.query.setData(this.platea).subscribe({
-        next: (x: any) => (console.log(x)),
-        error: err => console.error("Observer got an error: " + JSON.stringify(err))
-        });
+        
 
-        this.query.getData().subscribe({
-          next: (x: any) => (
-          this.p=JSON.parse((x)), console.log(this.p['postiNome'][0]['nome'])),
-          error: err => console.error("Observer got an error: " + JSON.stringify(err))
-          });
-        console.log(this.p)
+        //this.query.getData().subscribe({
+         // next: (x: any) => (
+         // this.p=JSON.parse((x)), console.log(this.p['postiNome'][0]['nome'])),
+         // error: err => console.error("Observer got an error: " + JSON.stringify(err))
+          //});
+          for(var i=0; i++; i<7){
+            console.log("e")
+          
+          }
+  
   }
 
       receiveKey($event) { 
@@ -117,9 +118,12 @@ export class AppComponent  {
          imposta(posto: string){   
        console.log("Prenotato a " + this.nominativo +" il posto " + posto);
       console.log(this.chiave)
-      
+      this.query.setData(this.platea).subscribe({
+        next: (x: any) => (console.log(x)),
+        error: err => console.error("Observer got an error: " + JSON.stringify(err))
+        });
       this.nominativo=undefined;
-      // query per inserire nome al posto, set
+      
        
          }
            
