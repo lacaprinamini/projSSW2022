@@ -39,7 +39,9 @@ export class AppComponent  {
       receiveKey($event) { 
         this.chiave = $event; 
         let nomiPlatea=Object;
+        let nomiPalchi=Object;
         this.platea= new posti(7, 10, nomiPlatea);
+        this.palchi=new posti(4, 6, nomiPalchi);
         this.query.getData(this.chiave).subscribe({
       next: (x: any) => (this.platea= JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
@@ -61,7 +63,9 @@ export class AppComponent  {
           
         }
       }
-      this.query.setData(this.platea).subscribe({
+      console.log(this.palchi['postiNome'])
+      console.log(this.platea+"rrr")
+      this.query.setData(this.platea.postiNome['postiNome'],this.palchi['postiNome']).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
         });        
