@@ -80,33 +80,44 @@ if(this.postiOccupati!==null){
           if(this.postiOccupati===null){
             this.postiOccupati=[{"": "", nome: ""}]            
             }
-            var verifica=true;
-           
+            var verificaPostoPlatea=true;          
             for(let c in this.postiOccupati){
-              if(this.postiOccupati[c]['platea']===posto ){
-                
-                 verifica=false;
+              if(this.postiOccupati[c]['platea']===posto ){              
+                 verificaPostoPlatea=false;
                 break;
               }
              }
-
-
-
-if(verifica){
-        if(posizione==="platea"){
+             var verificaPostoPalchi=true;          
+            for(let c in this.postiOccupati){
+              if(this.postiOccupati[c]['palchi']===posto ){              
+                 verificaPostoPalchi=false;
+                break;
+              }
+             }
+             console.log(verificaPostoPalchi, verificaPostoPlatea)
+      if(posizione==="platea"){
+           if(verificaPostoPlatea){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
-        }
-        else{
-          this.postiOccupati.push({"palchi": posto, nome: this.nominativo})
-          
-        }
-      this.query.setData(this.postiOccupati).subscribe({
-        next: (x: any) => (console.log(x)),
-        error: err => console.error("Observer got an error: " + JSON.stringify(err))
-        });        
-      this.nominativo=undefined;      
-         }
-          
-        }
+        
+        this.query.setData(this.postiOccupati).subscribe({
+          next: (x: any) => (console.log(x)),
+          error: err => console.error("Observer got an error: " + JSON.stringify(err))
+          });        
+        this.nominativo=undefined; 
+      }   
+    }
+    if(posizione==="palchi"){
+      if(verificaPostoPalchi){
+        
+     this.postiOccupati.push({"palco": posto, nome: this.nominativo})
+   
+   this.query.setData(this.postiOccupati).subscribe({
+     next: (x: any) => (console.log(x)),
+     error: err => console.error("Observer got an error: " + JSON.stringify(err))
+     });        
+   this.nominativo=undefined; 
+ }   
+}
+      }
 }
 
