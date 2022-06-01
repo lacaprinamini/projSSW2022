@@ -29,12 +29,13 @@ class posti {
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
+  postiScelti: number[];
   platea: posti;
   palchi: posti;
   postiPlatea: string[]=[];
   postiPalchi: string[]=[];
   nominativo: string;
-  chiave: string;
+  chiave: any;
   postiOccupati: any[]=[];
   numeroPostiPrenotatiPlatea: string[]=[];
   numeroPostiPrenotatiPalchi: string[]=[];
@@ -42,6 +43,24 @@ export class AppComponent  {
   constructor(private query: kvaasService) {
     this.error="0";
   }
+  receivePosti($event) { 
+     this.postiScelti=$event;
+     
+     let nomiPlatea=[];
+        let nomiPalchi=[];
+        let postiDisponibiliPalchi=[];
+        let postiDisponibiliPlatea=[];
+        console.log(this.postiScelti[3])
+     this.platea= new posti(this.postiScelti[0], this.postiScelti[1], nomiPlatea, postiDisponibiliPlatea);
+    console.log(this.platea)
+        this.palchi=new posti(this.postiScelti[2], this.postiScelti[3], nomiPalchi, postiDisponibiliPalchi);
+        
+        
+    
+      
+  }
+
+
 
       receiveKey($event) { 
         this.chiave = $event; 
@@ -54,7 +73,7 @@ export class AppComponent  {
         this.palchi=new posti(4, 6, nomiPalchi, postiDisponibiliPalchi);
         
         
-        this.postiOccupati=[{"": "", nome: ""}] 
+        this.postiOccupati=[{"x": "", nome: "x"}] 
         this.query.getData(this.chiave).subscribe({
       next: (x: any) => (this.postiOccupati=JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
@@ -63,6 +82,7 @@ export class AppComponent  {
       }
 
       receiveNominativo($event) { 
+       
         this.nominativo = $event;
         
         for(let presente in this.postiOccupati){
@@ -90,9 +110,8 @@ if(this.postiOccupati!==null){
   }
   }
          imposta(posto: string, posizione: string){ 
-          if(this.postiOccupati===null){
-            this.postiOccupati=[{"": "", nome: ""}]            
-            }
+          
+        
             var verificaPostoPlatea=true;          
             for(let c in this.postiOccupati){
               if(this.postiOccupati[c]['platea']===posto ){              
@@ -111,7 +130,7 @@ if(this.postiOccupati!==null){
            if(verificaPostoPlatea){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
         
-        this.query.setData(this.postiOccupati).subscribe({
+        this.query.setData(this.postiOccupati, this.chiave).subscribe({
           next: (x: any) => (console.log(x)),
           error: err => console.error("Observer got an error: " + JSON.stringify(err))
           });   
@@ -124,7 +143,7 @@ if(this.postiOccupati!==null){
         
      this.postiOccupati.push({"palco": posto, nome: this.nominativo})
    
-   this.query.setData(this.postiOccupati).subscribe({
+   this.query.setData(this.postiOccupati, this.chiave).subscribe({
      next: (x: any) => (console.log(x)),
      error: err => console.error("Observer got an error: " + JSON.stringify(err))
      });        
