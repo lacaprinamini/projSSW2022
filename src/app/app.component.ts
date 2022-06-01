@@ -60,8 +60,10 @@ export class AppComponent  {
       }
 
       receiveNominativo($event) { 
-        this.nominativo = $event;        
-      }
+        this.nominativo = $event;
+
+       
+    }
       
          imposta(posto: string, posizione: string){ 
            
