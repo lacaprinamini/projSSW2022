@@ -50,10 +50,10 @@ export class AppComponent  {
         this.postiOccupati=[{"": "", nome: ""}]   
         
         this.query.getData(this.chiave).subscribe({
-      next: (x: any) => (console.log(JSON.parse(x))),
+      next: (x: any) => (this.postiOccupati=JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });  
-      this.postiOccupati.splice(0,1);
+     
       }
 
       receiveNominativo($event) { 
