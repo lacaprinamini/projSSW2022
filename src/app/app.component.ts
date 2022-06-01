@@ -78,9 +78,21 @@ if(this.postiOccupati!==null){
   }
          imposta(posto: string, posizione: string){ 
           if(this.postiOccupati===null){
-            console.log("uuu")
-            this.postiOccupati=[{"": "", nome: ""}] 
+            this.postiOccupati=[{"": "", nome: ""}]            
             }
+            var verifica=true;
+           
+            for(let c in this.postiOccupati){
+              if(this.postiOccupati[c]['platea']===posto ){
+                
+                 verifica=false;
+                break;
+              }
+             }
+
+
+
+if(verifica){
         if(posizione==="platea"){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
         }
@@ -88,7 +100,6 @@ if(this.postiOccupati!==null){
           this.postiOccupati.push({"palchi": posto, nome: this.nominativo})
           
         }
-    
       this.query.setData(this.postiOccupati).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
@@ -96,6 +107,6 @@ if(this.postiOccupati!==null){
       this.nominativo=undefined;      
          }
           
-
+        }
 }
 
