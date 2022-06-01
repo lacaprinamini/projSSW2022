@@ -35,8 +35,8 @@ export class AppComponent  {
   postiPalchi: string[]=[];
   color: "";
   nominativo: string;
-  chiave: any;
-  postiOccupati: any;
+  chiave: string;
+  postiOccupati: any[]=[];
   numeroPostiPrenotatiPlatea: string[]=[];
   numeroPostiPrenotatiPalchi: string[]=[];
   constructor(private query: kvaasService) {}
@@ -51,18 +51,20 @@ export class AppComponent  {
         this.platea= new posti(7, 10, nomiPlatea, postiDisponibiliPlatea);
         this.palchi=new posti(4, 6, nomiPalchi, postiDisponibiliPalchi);
         
-        this.postiOccupati=[{"": "", nome: ""}]   
         
+        this.postiOccupati=[{"": "", nome: ""}] 
         this.query.getData(this.chiave).subscribe({
       next: (x: any) => (this.postiOccupati=JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });  
-     
+      if(this.postiOccupati!==null){
+      this.postiOccupati=[{"": "", nome: ""}] 
+      }
       }
 
       receiveNominativo($event) { 
         this.nominativo = $event;
-
+if(this.postiOccupati!==null){
    for(let pl in this.postiOccupati){
     if(this.postiOccupati[pl]['platea']!=undefined){
       this.numeroPostiPrenotatiPlatea.push(this.postiOccupati[pl]['platea'])
@@ -75,9 +77,9 @@ export class AppComponent  {
    }
       
     }
-      
+  }
          imposta(posto: string, posizione: string){ 
-           
+          this.postiOccupati=[{"": "", nome: ""}]   
         if(posizione==="platea"){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
         }
