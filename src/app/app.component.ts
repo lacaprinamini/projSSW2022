@@ -49,7 +49,7 @@ export class AppComponent  {
         this.palchi=new posti(4, 6, nomiPalchi, postiDisponibiliPalchi);
      
         this.query.getData(this.chiave).subscribe({
-      next: (x: any) => (console.log(x.postiNome)),
+      next: (x: any) => (console.log(JSON.parse(x))),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });  
       }
