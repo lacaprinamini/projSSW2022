@@ -15,21 +15,15 @@
       <div>
         <p>Platea:</p>
         <ul>
-          <li *ngFor="let posto of platea.postiDisponibili; let postoPrenotato of postoOccupato">
-            <button [appColor]="color"(click)="imposta(posto, 'platea')">{{ posto }}
+          <li *ngFor="let posto of platea.postiDisponibili; ">
+            <button [ngStyle]="numeroPostiPrenotatiPlatea.indexOf(posto)!==-1 && {'color': 'red'}"(click)="imposta(posto, 'platea')">{{ posto}}
             </button>
           </li>
         </ul>
       </div>
       <div>
         <p>Palchi:</p>
-        <ul>
-          <li *ngFor="let posto of palchi.postiDisponibili">
-            <button [appColor]="color" (click)="imposta(posto, 'palchi')">
-              {{ posto }}
-            </button>
-          </li>
-        </ul>
+     
       </div>
     </div>
   </body>
