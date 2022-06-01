@@ -33,13 +33,15 @@ export class AppComponent  {
   palchi: posti;
   postiPlatea: string[]=[];
   postiPalchi: string[]=[];
-  color: "";
   nominativo: string;
   chiave: string;
   postiOccupati: any[]=[];
   numeroPostiPrenotatiPlatea: string[]=[];
   numeroPostiPrenotatiPalchi: string[]=[];
-  constructor(private query: kvaasService) {}
+  error:string;
+  constructor(private query: kvaasService) {
+    this.error="0";
+  }
 
       receiveKey($event) { 
         this.chiave = $event; 
@@ -62,6 +64,15 @@ export class AppComponent  {
 
       receiveNominativo($event) { 
         this.nominativo = $event;
+        
+        for(let presente in this.postiOccupati){
+          if(this.postiOccupati[presente]['nome']===this.nominativo){
+            this.nominativo=undefined;
+            this.error="Il nome è già presente"
+          }
+         }
+
+if(this.nominativo!==undefined){
 if(this.postiOccupati!==null){
    for(let pl in this.postiOccupati){
     if(this.postiOccupati[pl]['platea']!=undefined){
@@ -73,8 +84,10 @@ if(this.postiOccupati!==null){
       this.numeroPostiPrenotatiPalchi.push(this.postiOccupati[pa]['palchi'])
     }
    }
-      
+   
+     this.error="" ;
     }
+  }
   }
          imposta(posto: string, posizione: string){ 
           if(this.postiOccupati===null){
@@ -106,7 +119,7 @@ if(this.postiOccupati!==null){
         this.nominativo=undefined; 
       }   
     }
-    if(posizione==="palchi"){
+    if(posizione==="palco"){
       if(verificaPostoPalchi){
         
      this.postiOccupati.push({"palco": posto, nome: this.nominativo})

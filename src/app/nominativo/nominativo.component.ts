@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NominativoComponent {
   @Input() chiave: string;
+  @Input() error: string;
   nominativo: string;
   dati: string[];
   @Output() nominativoEvent = new EventEmitter<string>();
@@ -15,7 +16,6 @@ export class NominativoComponent {
   onEnter(value: string) {
     this.nominativo=value;
     this.nominativoEvent.emit(this.nominativo);
-
   }
 
 }

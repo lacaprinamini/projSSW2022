@@ -3,5 +3,6 @@
   <p > Inserisci il nome:
   <input #nominativo (keyup.enter)="onEnter(nominativo.value)">
 `</p>
+<p *ngIf="error!=='0'"> {{error}}</p>
 </body>
 </html>

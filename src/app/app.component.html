@@ -4,7 +4,7 @@
 
 <div *ngIf="nominativo == undefined">
   <p *ngIf="chiave !== undefined">
-    <app-nominativo (nominativoEvent)="receiveNominativo($event)">
+    <app-nominativo [error]="error" (nominativoEvent)="receiveNominativo($event)">
     </app-nominativo>
   </p>
 </div>
