@@ -23,7 +23,12 @@
       </div>
       <div>
         <p>Palchi:</p>
-     
+        <ul>
+        <li *ngFor="let posto of palchi.postiDisponibili; ">
+          <button [ngStyle]="numeroPostiPrenotatiPalchi.indexOf(posto)!==-1 && {'color': 'red'}"(click)="imposta(posto, 'palco')">{{ posto}}
+          </button>
+        </li>
+      </ul>
       </div>
     </div>
   </body>
