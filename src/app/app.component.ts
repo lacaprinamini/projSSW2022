@@ -70,7 +70,7 @@ if(this.postiOccupati!==null){
    }
    for(let pa in this.postiOccupati){
     if(this.postiOccupati[pa]['palchi']!=undefined){
-      this.numeroPostiPrenotatiPalchi.push(this.postiOccupati[pa]['platea'])
+      this.numeroPostiPrenotatiPalchi.push(this.postiOccupati[pa]['palchi'])
     }
    }
       
