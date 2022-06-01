@@ -38,7 +38,7 @@ export class AppComponent  {
   postiOccupati: any[]=[];
   numeroPostiPrenotatiPlatea: string[]=[];
   numeroPostiPrenotatiPalchi: string[]=[];
-  error:string;
+  error:any;
   constructor(private query: kvaasService) {
     this.error="0";
   }
@@ -115,7 +115,8 @@ if(this.postiOccupati!==null){
         this.query.setData(this.postiOccupati).subscribe({
           next: (x: any) => (console.log(x)),
           error: err => console.error("Observer got an error: " + JSON.stringify(err))
-          });        
+          });   
+          this.error=("Prenotato a " + this.nominativo + " il posto " + posto)     
         this.nominativo=undefined; 
       }   
     }

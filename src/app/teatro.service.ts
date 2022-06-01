@@ -13,7 +13,7 @@ export class kvaasService {
   public setData(teatroPlatea: object): Observable<ArrayBuffer> 
    {
     var msg1 = JSON.stringify(teatroPlatea);
-    return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + 'bde8b48f', msg1 )
+    return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '25a272e4', msg1 )
 }
 
 public getData(chiave: string): Observable<string> {

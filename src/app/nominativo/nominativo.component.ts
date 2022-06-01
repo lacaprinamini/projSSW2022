@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NominativoComponent {
   @Input() chiave: string;
-  @Input() error: string;
+  @Input() error: any;
   nominativo: string;
   dati: string[];
   @Output() nominativoEvent = new EventEmitter<string>();
