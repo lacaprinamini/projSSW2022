@@ -9,7 +9,9 @@ class posti {
   postiDisponibili: string[]
   constructor(nfile: number,
     nposti: number, postiNome: object, postiDisponibili: string[]) {
+      
       let posti= Array(nfile).fill("").map(() => Array(nposti).fill("x"));
+      console.log(posti)
     const postoNome = [];
     const postiLiberi=[];
     posti.map((fila, i) => {
@@ -50,9 +52,9 @@ export class AppComponent  {
         let nomiPalchi=[];
         let postiDisponibiliPalchi=[];
         let postiDisponibiliPlatea=[];
-        console.log(this.postiScelti[3])
+     
      this.platea= new posti(this.postiScelti[0], this.postiScelti[1], nomiPlatea, postiDisponibiliPlatea);
-    console.log(this.platea)
+    //console.log(this.platea)
         this.palchi=new posti(this.postiScelti[2], this.postiScelti[3], nomiPalchi, postiDisponibiliPalchi);
         
         
