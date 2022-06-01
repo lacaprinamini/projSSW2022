@@ -10,12 +10,12 @@ export class kvaasService {
   data: string;
   constructor(private http: HttpClient) { }
 
-  public setData(teatroPlatea: string[]): Observable<ArrayBuffer> 
+  public setData(teatroPlatea: object, teatroPalchi: object): Observable<ArrayBuffer> 
    {
     var msg1 = JSON.stringify(teatroPlatea);
-  
+    var msg2 = JSON.stringify(teatroPalchi);
      
-    return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '1ea9441d', msg1 )
+    return this.http.post<ArrayBuffer>(this.baseURL+ '/set?key=' + '1ea9441d', msg1 + msg2 )
 }
 public getData(chiave: string): Observable<string> {
   return this.http.get<string>(this.baseURL+ '/get?key=' +chiave);

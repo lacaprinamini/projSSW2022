@@ -46,10 +46,10 @@ export class AppComponent  {
         let postiDisponibiliPlatea=[];
         this.platea= new posti(7, 10, nomiPlatea, postiDisponibiliPlatea);
         
-        //this.palchi=new posti(4, 6, nomiPalchi);
+        this.palchi=new posti(4, 6, nomiPalchi, postiDisponibiliPalchi);
      
         this.query.getData(this.chiave).subscribe({
-      next: (x: any) => (this.platea.postiNome= JSON.parse(x)),
+      next: (x: any) => (console.log(x.postiNome)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });  
       }
@@ -58,21 +58,32 @@ export class AppComponent  {
         this.nominativo = $event;        
       }
       
-         imposta(posto: string){  
-                  
+         impostaPlatea(posto: string){                  
       for (var k in this.platea.postiDisponibili){
         if(this.platea.postiDisponibili[k]==posto){
           this.platea.postiNome[k]=this.nominativo;
-          
         }
       }
-      this.query.setData(this.platea.postiNome).subscribe({
+      
+      this.query.setData(this.platea, this.palchi).subscribe({
         next: (x: any) => (console.log(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
         });        
       this.nominativo=undefined;      
          }
          
+         impostaPalchi(posto: string){                  
+          for (var k in this.palchi.postiDisponibili){
+            if(this.palchi.postiDisponibili[k]==posto){
+              this.palchi.postiNome[k]=this.nominativo;
+            }
+          }
+          this.query.setData(this.platea, this.palchi).subscribe({
+            next: (x: any) => (console.log(x)),
+            error: err => console.error("Observer got an error: " + JSON.stringify(err))
+            });        
+          this.nominativo=undefined;      
+             }
           
 
 }

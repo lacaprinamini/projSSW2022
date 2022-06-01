@@ -16,7 +16,7 @@
         <p>Platea:</p>
         <ul>
           <li *ngFor="let posto of platea.postiDisponibili">
-            <button [appColor]="color"(click)="imposta(posto)">{{ posto }}
+            <button [appColor]="color"(click)="impostaPlatea(posto)">{{ posto }}
             </button>
           </li>
         </ul>
@@ -24,8 +24,8 @@
       <div>
         <p>Palchi:</p>
         <ul>
-          <li *ngFor="let posto of postiPalchi">
-            <button [appColor]="color" (click)="imposta(posto)">
+          <li *ngFor="let posto of palchi.postiDisponibili">
+            <button [appColor]="color" (click)="impostaPalchi(posto)">
               {{ posto }}
             </button>
           </li>
