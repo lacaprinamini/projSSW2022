@@ -57,9 +57,7 @@ export class AppComponent  {
       next: (x: any) => (this.postiOccupati=JSON.parse(x)),
         error: err => console.error("Observer got an error: " + JSON.stringify(err))
       });  
-      if(this.postiOccupati!==null){
-      this.postiOccupati=[{"": "", nome: ""}] 
-      }
+      
       }
 
       receiveNominativo($event) { 
@@ -79,7 +77,10 @@ if(this.postiOccupati!==null){
     }
   }
          imposta(posto: string, posizione: string){ 
-          this.postiOccupati=[{"": "", nome: ""}]   
+          if(this.postiOccupati===null){
+            console.log("uuu")
+            this.postiOccupati=[{"": "", nome: ""}] 
+            }
         if(posizione==="platea"){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
         }
