@@ -106,8 +106,7 @@ if(this.postiOccupati!==null){
                  verificaPostoPalchi=false;
                 break;
               }
-             }
-             console.log(verificaPostoPalchi, verificaPostoPlatea)
+             }             
       if(posizione==="platea"){
            if(verificaPostoPlatea){
           this.postiOccupati.push({"platea": posto, nome: this.nominativo})
