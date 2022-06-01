@@ -39,14 +39,17 @@ export class AppComponent  {
   postiOccupati: any;
 
   constructor(private query: kvaasService) {}
+
       receiveKey($event) { 
         this.chiave = $event; 
         let nomiPlatea=[];
         let nomiPalchi=[];
         let postiDisponibiliPalchi=[];
         let postiDisponibiliPlatea=[];
+
         this.platea= new posti(7, 10, nomiPlatea, postiDisponibiliPlatea);
         this.palchi=new posti(4, 6, nomiPalchi, postiDisponibiliPalchi);
+        
         this.postiOccupati=[{"": "", nome: ""}]   
         
         this.query.getData(this.chiave).subscribe({
