@@ -1,22 +1,36 @@
 <p *ngIf="chiave == undefined">
-  <app-chiave (chiaveEvent)="receiveKey($event)" (postiEvent)="receivePosti($event)"> </app-chiave>
+  <app-chiave
+    (chiaveEvent)="receiveKey($event)"
+    (postiEvent)="receivePosti($event)"
+  >
+  </app-chiave>
 </p>
 
 <div *ngIf="nominativo == undefined">
   <p *ngIf="chiave !== undefined">
-    <app-nominativo [error]="error" (nominativoEvent)="receiveNominativo($event)" >
+    <app-nominativo
+      [error]="error"
+      (nominativoEvent)="receiveNominativo($event)"
+    >
     </app-nominativo>
   </p>
 </div>
 <html>
   <body>
     <div *ngIf="nominativo !== undefined">
-
       <div>
         <p>Platea:</p>
         <ul>
-          <li *ngFor="let posto of platea.postiDisponibili; ">
-            <button [ngStyle]="numeroPostiPrenotatiPlatea.indexOf(posto)!==-1 && {'color': 'red'}"(click)="imposta(posto, 'platea')">{{ posto}}
+          <li *ngFor="let posto of platea.postiDisponibili">
+            <button
+              [ngStyle]="
+                numeroPostiPrenotatiPlatea.indexOf(posto) !== -1 && {
+                  color: 'red'
+                }
+              "
+              (click)="imposta(posto, 'platea')"
+            >
+              {{ posto }}
             </button>
           </li>
         </ul>
@@ -24,11 +38,19 @@
       <div>
         <p>Palchi:</p>
         <ul>
-        <li *ngFor="let posto of palchi.postiDisponibili; ">
-          <button [ngStyle]="numeroPostiPrenotatiPalchi.indexOf(posto)!==-1 && {'color': 'red'}"(click)="imposta(posto, 'palco')">{{ posto}}
-          </button>
-        </li>
-      </ul>
+          <li *ngFor="let posto of palchi.postiDisponibili">
+            <button
+              [ngStyle]="
+                numeroPostiPrenotatiPalchi.indexOf(posto) !== -1 && {
+                  color: 'red'
+                }
+              "
+              (click)="imposta(posto, 'palco')"
+            >
+              {{ posto }}
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </body>
