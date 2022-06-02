@@ -109,12 +109,15 @@ export class AppComponent {
           }
         }
         for (let pa in this.postiOccupati) {
-          if (this.postiOccupati[pa]['palchi'] != undefined) {
+          if (this.postiOccupati[pa]['palco'] != undefined) {
             this.numeroPostiPrenotatiPalchi.push(
-              this.postiOccupati[pa]['palchi']
+              this.postiOccupati[pa]['palco']
+
+              
             );
           }
         }
+        console.log(this.numeroPostiPrenotatiPalchi)
         this.error = '';
       }
     }
@@ -133,7 +136,7 @@ export class AppComponent {
     }
     var verificaPostoPalchi = true;
     for (let c in this.postiOccupati) {
-      if (this.postiOccupati[c]['palchi'] === posto) {
+      if (this.postiOccupati[c]['palco'] === posto) {
         verificaPostoPalchi = false;
         break;
       }
