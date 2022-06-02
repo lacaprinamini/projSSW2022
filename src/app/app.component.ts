@@ -12,11 +12,8 @@ class posti {
     postiNome: object,
     postiDisponibili: string[]
   ) {
-    let fila = nfile;
-    console.log(fila);
-    let posti = Array(fila)
-      .fill('')
-      .map(() => Array(nposti).fill('x'));
+    
+    let posti = Array(Number(nfile)).fill('').map(() => Array(Number(nposti)).fill('x'));
     console.log(posti);
     const postoNome = [];
     const postiLiberi = [];
@@ -72,6 +69,11 @@ export class AppComponent {
       nomiPalchi,
       postiDisponibiliPalchi
     );
+    this.query.newData().subscribe({
+      next: (x: any) => (this.chiave=x),
+      error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err)),
+    });
   }
   receiveKey($event) {
     this.chiave = $event;
