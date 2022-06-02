@@ -14,7 +14,6 @@ class posti {
   ) {
     
     let posti = Array(Number(nfile)).fill('').map(() => Array(Number(nposti)).fill('x'));
-    console.log(posti);
     const postoNome = [];
     const postiLiberi = [];
     posti.map((fila, i) => {
@@ -124,7 +123,7 @@ export class AppComponent {
   }
 
   imposta(posto: string, posizione: string) {
-    if(this.postiOccupati===undefined){
+    if(this.postiOccupati===null){
       this.postiOccupati=[{"":"", nome: ""}];
     }
     var verificaPostoPlatea = true;
