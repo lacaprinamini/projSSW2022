@@ -6,4 +6,4 @@ L'applicazione permette di inserire una chiave di un teatro già esistente, sia 
 
 Funzionalità aggiuntiva 1 --> è possibile prenotare solamente un solo posto a persona, nel caso di errore verrà visualizzato il messaggio subito dopo aver inserito il nominativo "Il nome è già presente". 
 
-Funzionalità aggiuntiva 2 --> è possibile inoltre creare il proprio teatro selezionando il numero delle file e dei posti sia della platea che dei palchi, in seguito la visualizzazione sarà uguale alla precedente, ma con la differenza che il numero di posti prenotabili saranno quelli insriti precedentemente e che il teatro ovviamente sarà per forza vuoto inizialmente. 
+Funzionalità aggiuntiva 2 --> è possibile inoltre creare il proprio teatro selezionando il numero delle file e dei posti sia della platea che dei palchi, in seguito la visualizzazione sarà uguale alla precedente, ma con la differenza che il numero di posti prenotabili saranno uguali a quelli inseriti inizialmente. 
