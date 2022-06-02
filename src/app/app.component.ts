@@ -121,6 +121,9 @@ export class AppComponent {
   }
 
   imposta(posto: string, posizione: string) {
+    if(this.postiOccupati===undefined){
+      this.postiOccupati=[{"":"", nome: ""}];
+    }
     var verificaPostoPlatea = true;
     for (let c in this.postiOccupati) {
       if (this.postiOccupati[c]['platea'] === posto) {
