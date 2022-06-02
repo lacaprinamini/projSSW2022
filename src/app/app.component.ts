@@ -116,7 +116,6 @@ export class AppComponent {
             );
           }
         }
-        console.log(this.numeroPostiPrenotatiPalchi)
         this.error = '';
       }
     }
